@@ -1,0 +1,223 @@
+:root {
+  /* === Ocean Professional Theme Colors === */
+  --primary: #2563EB;         /* Blue 600 */
+  --secondary: #F59E0B;       /* Amber 500 */
+  --success: #F59E0B;
+  --error: #EF4444;           /* Red 500 */
+  --gradient-start: #2563EB1A; /* Blue 600 with alpha (from-blue-500/10) */
+  --gradient-end: #f9fafb;    /* to-gray-50 */
+  --background: #f9fafb;
+  --surface: #ffffff;
+  --text: #111827;            /* Gray 900 */
+  --muted: #6b7280;           /* Gray 500 */
+  --border: #e5e7eb;          /* Gray 200 */
+  --shadow: 0 2px 12px 0 rgba(37,99,235,0.05);
+
+  /* Sizing and Radius */
+  --radius-lg: 18px;
+  --radius-md: 10px;
+  --radius-sm: 6px;
+  --transition: 0.2s cubic-bezier(0.4,0,0.2,1);
+
+  /* Update the following to change theme at once: */
+  /* --primary: <your color>; --secondary: <your color>; etc */
+}
+
+/* === Apply global background and font === */
+body {
+  background: linear-gradient(120deg, var(--gradient-start), var(--gradient-end));
+  color: var(--text);
+  font-family: 'Segoe UI', 'Roboto', 'Helvetica', Arial, sans-serif;
+}
+
+header, .surface {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+}
+
+input, textarea, select {
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  padding: 0.75em 1em;
+  background: #fff;
+  font-size: 1rem;
+  transition: box-shadow var(--transition);
+  color: var(--text);
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: 2px solid var(--primary);
+  box-shadow: 0 0 0 2px var(--primary)11;
+}
+
+.button, button, .btn {
+  background: var(--primary);
+  color: #fff;
+  border-radius: var(--radius-md);
+  border: none;
+  padding: 0.56em 1.3em;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 1px 2px 0 rgba(37,99,235,0.07);
+  transition: background var(--transition), transform var(--transition);
+}
+
+.button.secondary, .btn.secondary {
+  background: var(--secondary);
+  color: #fff;
+}
+
+.button.danger, .btn.danger {
+  background: var(--error);
+}
+
+.button:disabled, .btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.button:hover, button:hover, .btn:hover {
+  filter: brightness(1.08);
+  transform: translateY(-2px);
+}
+
+label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.3em;
+  color: var(--muted);
+}
+
+@media (max-width: 600px) {
+  .notes-app-header, .surface, .note-form, .search-bar, .notes-list {
+    border-radius: var(--radius-sm);
+    padding: 1em;
+  }
+}
+
+/* ========== Notes App Layout ========== */
+.notes-app-header {
+  background: linear-gradient(95deg, var(--primary) 2%, var(--secondary) 98%);
+  color: #fff;
+  padding: 1.3em 2em;
+  border-radius: var(--radius-lg);
+  margin-bottom: 1.3em;
+  box-shadow: 0 6px 30px 0 rgba(37,99,235,0.11);
+  letter-spacing: 1px;
+}
+.notes-app-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: 2px;
+}
+
+.single-column {
+  max-width: 490px;
+  margin: 0 auto;
+  padding: 2.5em 1.2em 1.5em 1.2em;
+}
+
+.note-form {
+  margin-bottom: 2em;
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  padding: 1.7em 1.3em 1.1em 1.3em;
+}
+
+.note-form input, .note-form textarea {
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+.note-form-actions {
+  display: flex;
+  gap: 0.5em;
+  justify-content: flex-end;
+}
+
+.notes-list {
+  margin-bottom: 2em;
+}
+
+.note-empty-state, .notes-empty-state {
+  text-align: center;
+  color: var(--muted);
+  font-style: italic;
+  padding: 2.5em;
+}
+
+.note-item {
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  margin-bottom: 1.2em;
+  padding: 1.1em 1em;
+  box-shadow: var(--shadow);
+  transition: box-shadow var(--transition), border-color var(--transition);
+  display: flex;
+  flex-direction: column;
+  gap: 0.7em;
+}
+
+.note-item .note-title {
+  font-size: 1.17rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.note-item .note-content {
+  font-size: 1rem;
+  color: var(--text);
+  white-space: pre-line;
+  word-break: break-word;
+}
+
+.note-item .note-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.89em;
+  color: var(--muted);
+}
+
+.note-item-buttons {
+  display: flex;
+  gap: 0.5em;
+}
+
+@media (max-width: 600px) {
+  .single-column {
+    padding: 1em 0.2em;
+    max-width: 100vw;
+  }
+}
+
+.search-bar {
+  margin-bottom: 1.6em;
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow);
+  padding: 0.9em 1em;
+}
+
+.search-bar input {
+  width: 100%;
+}
+
+.error-message {
+  color: var(--error);
+  font-size: 0.99em;
+  margin-bottom: 1em;
+  padding: 0.35em 0;
+  text-align: left;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px; 
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0); border: 0;
+}
